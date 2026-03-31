@@ -1,6 +1,11 @@
 server:
   port: 8080
 
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+
 spring:
   application:
     name: api-gateway
@@ -83,3 +88,14 @@ springdoc:
         url: /reviews/v3/api-docs
       - name: Notification Service
         url: /notifications/v3/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+    health:
+      show-details: always
